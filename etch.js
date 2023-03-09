@@ -10,18 +10,21 @@ let makeGrid = (rows, cols) => {
         let cell = document.createElement('div');
         //cell.innerText = (i + 1);  //check #
         container.appendChild(cell).className = "gridboxes"
+        cell.addEventListener('mouseover', () =>{
+            cell.style.backgroundColor = "white";
+        })
     };
 };
 makeGrid(16,16);
 
 //hover effect event listener 
-const hoverChange = [...document.getElementsByClassName('gridboxes')]; //forEach() needs array to work
+var hoverChange = document.getElementsByClassName('gridboxes');
 
-hoverChange.forEach(cell => {
-    cell.addEventListener("mouseover", () => {
-        cell.setAttribute('style', 'background-color: white;')
-    });
-});
+//hoverChange.forEach(cell => {  //bug with spread syntax, wouldnt update new gridbox style
+//    cell.addEventListener("mouseover", () => {
+ //     cell.setAttribute('style', 'background-color: white;')
+//    });
+//});
 
 //reset button
 let clear = document.querySelector("#btn");
@@ -36,5 +39,16 @@ clear.addEventListener('click', () => {
 let custombtn = document.querySelector("#custom");
 
 custombtn.addEventListener('click', () => {
-    let a = prompt("How many squares per size? (<100)")
+    resetGrid()
 });
+
+function resetGrid(){
+    for (let i=0; i< hoverChange.length; i++) {
+        hoverChange[i].removeAttribute("style");
+    };
+    do { 
+        var a = parseInt(prompt("How many squares per side? (<100)"), 10);
+} while (isNaN(a) || a > 100 || a < 1);
+
+    makeGrid(a,a);
+};
