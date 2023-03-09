@@ -23,3 +23,18 @@ hoverChange.forEach(cell => {
     });
 });
 
+//reset button
+let clear = document.querySelector("#btn");
+
+clear.addEventListener('click', () => {
+    for (let i=0; i< hoverChange.length; i++) {  //need to call removeAttribute on elements of nodelist
+        hoverChange[i].removeAttribute("style");
+    };
+});
+
+//custom pad size
+let custombtn = document.querySelector("#custom");
+
+custombtn.addEventListener('click', () => {
+    let a = prompt("How many squares per size? (<100)")
+});
