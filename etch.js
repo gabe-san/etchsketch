@@ -15,10 +15,11 @@ let makeGrid = (rows, cols) => {
 makeGrid(16,16);
 
 //hover effect event listener 
-const hoverChange = [...document.getElementsByClassName('gridboxes')];
+const hoverChange = [...document.getElementsByClassName('gridboxes')]; //forEach() needs array to work
 
 hoverChange.forEach(cell => {
     cell.addEventListener("mouseover", () => {
         cell.setAttribute('style', 'background-color: white;')
     });
 });
+
