@@ -1,8 +1,10 @@
+body{
+    background-color: rgb(44, 44, 44);
+}
 :root {
     --grid-cols: 1;
     --grid-rows: 1;
 }
-
 
 #container {
     display: grid;
